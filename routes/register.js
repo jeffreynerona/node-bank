@@ -5,7 +5,11 @@ var mongoose = require('mongoose');
 
 /* Get register page. */
 router.get('/', function(req, res, next) {
-  res.render('register', { title: 'Register' });
+  if(req.cookies.logged){
+  	res.redirect('/member');
+  } else {
+  	res.render('register', { title: 'Register' });
+  }
 });
 
 /* Proccess Register*/
