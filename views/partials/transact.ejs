@@ -1,0 +1,7 @@
+<form action="/member/transact" method="POST">
+    <h2><%= action %></h2>
+    Amount: <input name="amount" required autofocus>
+    <input type="hidden" name="card" value=<%= userdata.card %>>
+    <input type="hidden" name="action" value=<%= action %>>
+    <button type="submit"><%= action %></button>
+</form>
