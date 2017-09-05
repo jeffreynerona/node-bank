@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var mongoose = require('mongoose');
-
 var userdata;
 
 /* Get member page. */
@@ -30,33 +29,37 @@ router.get('/logout', function(req, res, next) {
   res.clearCookie("logged");
   res.redirect('/login');
 });
-router.get('/trasact', function(req, res, next) {
+router.get('/transact', function(req, res, next) {
   res.send('it goes to get');
 });
-router.post('/trasact', function(req, res, next) {
+router.post('/transact', function(req, res, next) {
   console.log('transact working');
   var amount = req.body.amount;
   var card = req.body.card;
   var action = req.body.action;
-  var query = User.findOne({ 'card' : card });
-    query.select('name email money card image_url');
-    query.exec(function (err, user) {
-    if (err) return handleError(err);
-      if(action='DEPOSIT'){
-        var newAmount = amount + user.money;
-        User.updateOne(
-          { "card" : card },
-          { $set: { "money" : newAmount } }
-       );
-      };
-      if(action='WITHDRAWW'){
-        var newAmount = user.money - amount;
-        User.updateOne(
-          { "card" : card },
-          { $set: { "money" : newAmount } }
-       );
-      };
-      res.redirect('/member');
-    });
+  console.log(amount+' '+card+' '+action);
+    if(action=='DEPOSIT'){
+      var newAmount = (parseInt(amount) + parseInt(userdata.money)).toString();
+      var deposit = User.updateOne(
+      { 'card' : card },
+      { $set: { 'money' : newAmount } }
+      );
+      deposit.exec(function (err, result) {
+      if (err) return handleError(err);
+        console.log(result);
+      });
+    };
+    if(action=='WITHDRAW'){
+      var newAmount = parseInt(userdata.money) - parseInt(amount);
+      var withdraw = User.updateOne(
+      { 'card' : card },
+      { $set: { 'money' : newAmount } }
+      );
+      withdraw.exec(function (err, result) {
+      if (err) return handleError(err);
+        console.log(result);
+      });
+    };
+    res.redirect('/member');
 });
 module.exports = router;
