@@ -51,6 +51,7 @@ router.post('/transact', function(req, res, next) {
     };
     if(action=='WITHDRAW'){
       var newAmount = parseInt(userdata.money) - parseInt(amount);
+      if (newAmount<0) res.redirect('/member');
       var withdraw = User.updateOne(
       { 'card' : card },
       { $set: { 'money' : newAmount } }
