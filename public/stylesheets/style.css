@@ -1,8 +1,19 @@
-body {
-  padding: 50px;
+html, body {
+  height: 100%;
+  width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+.container-fluid {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.btn-group {
+	width: 100%;
 }

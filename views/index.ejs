@@ -1,7 +1,13 @@
 <%- include('partials/header') %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    LOGIN: <a href="/login"><strong>/login</strong></a><br>
-    REGISTER: <a href="/register"><strong>/register</strong></a><br>
-    API: <a href="/api"><strong>/api</strong></a></br>
+	<div class="jumbotron jumbotron">
+	  <h1 class="display-3"><%= title %></h1>
+	  <p class="lead">This is a simple Banking application using Node.js, and Express.js.</p>
+	  <hr class="my-4">
+	  <p>Available actions: Login, Register, Withdraw, Deposit, API</p>
+	  <p class="lead">
+	    <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
+	    <a class="btn btn-primary btn-lg" href="/register" role="button">Register</a>
+	    <a class="btn btn-primary btn-lg" href="/api" role="button">Api</a>
+	  </p>
+	</div>
 <%- include('partials/footer') %>

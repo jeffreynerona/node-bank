@@ -1,8 +1,26 @@
-<h1>Welcome <%= userdata.name %></h1>
-Card No.: <%= userdata.card %>
-Email: <%= userdata.email %>
-Money: <%= userdata.money %>
-<a href="/">Home</a>
-<a href="/member/withdraw">Withdraw</a>
-<a href="/member/deposit">Deposit</a>
-<a href="/member/logout">Logout</a>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+  	<div class="row">
+  		<div class="col-md-3"></div>
+        <div class="col-md-6">
+		    <p class="lead">
+		    <ul class="list-group">
+			  <li class="list-group-item active">Account Details</li>
+			  <li class="list-group-item"><strong>Card Holder: </strong> <%= userdata.name %></li>
+			  <li class="list-group-item"><strong>Card No: </strong> <%= userdata.card %></li>
+			  <li class="list-group-item"><strong>Email: </strong> <%= userdata.email %></li>
+			  <li class="list-group-item"><strong>Available Balance: </strong> <%= userdata.money %></li>
+			</ul>
+		    <p class="lead">
+		    	<div class="btn-group btn-block btn-group-lg" role="group" aria-label="Actions">
+				  <a href="/member/withdraw" type="button" class="btn btn-secondary">Withdraw</a>
+				  <a href="/member/deposit"type="button" class="btn btn-secondary">Deposit</a>
+				  <a href="/member/logout"type="button" class="btn btn-secondary">Logout</a>
+				</div>
+			 </p>
+        </div>
+        <div class="col-md-3"></div>
+  	</div>
+  </div>
+</div>
