@@ -18,3 +18,7 @@ a {
 .btn-group {
 	width: 100%;
 }
+
+.jumbotron {
+    min-height: 100vh;
+ }
